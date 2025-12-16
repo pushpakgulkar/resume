@@ -1,0 +1,230 @@
+/* Google Fonts - Poppins (Bold Headers) & Inter (Modern, Clean) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@700&display=swap');
+
+:root {
+    --bg-color: #050510; /* Near Black */
+    --card-color: rgba(255, 255, 255, 0.05); /* Highly Transparent */
+    --main-glow: #22d3ee; /* Bright Aqua/Cyan */
+    --secondary-glow: #f97316; /* Secondary Orange Glow for contrast */
+    --text-color: #f0f0f0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+    overflow: hidden;
+}
+
+/* Dynamic Background Effect (Stars/Particles) */
+body::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(#ffffff 1px, transparent 1px), 
+                radial-gradient(#ffffff 1px, transparent 1px);
+    background-size: 50px 50px; 
+    background-position: 0 0, 25px 25px; 
+    opacity: 0.1;
+    animation: move-bg 100s linear infinite; 
+}
+@keyframes move-bg {
+    from { transform: translate(0, 0); }
+    to { transform: translate(50px, 50px); }
+}
+
+/* ---------------- Profile Card (FLAT, COMPACT & ANIMATED) ---------------- */
+.card-container {
+    padding: 20px;
+    z-index: 10;
+    perspective: 1500px;
+}
+
+.profile-card {
+    width: 350px;
+    padding: 25px 30px; /* Compact Padding */
+    border-radius: 15px;
+    
+    background: var(--card-color);
+    backdrop-filter: blur(12px); 
+    
+    /* FIX: TILT REMOVED - FLATTENED */
+    transform-style: preserve-3d;
+    transform: rotateX(0deg) rotateY(0deg); 
+    animation: simple-float 8s infinite ease-in-out alternate;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease; 
+    
+    border: 1px solid var(--main-glow);
+    box-shadow: 
+        0 5px 20px rgba(0, 0, 0, 0.5),
+        0 0 8px var(--main-glow),
+        0 0 15px var(--secondary-glow); 
+}
+
+@keyframes simple-float {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-8px); } 
+}
+
+.profile-card:hover {
+    transform: scale(1.02);
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.9), 
+        0 0 15px var(--main-glow), 
+        0 0 30px var(--secondary-glow);
+}
+
+.shine { 
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 15px;
+    box-shadow: 0 0 15px 5px var(--secondary-glow);
+    animation: border-pulse 4s infinite ease-in-out;
+    opacity: 0; transition: opacity 0.5s; pointer-events: none; z-index: 1;
+}
+.profile-card:hover .shine { opacity: 1; }
+
+@keyframes border-pulse {
+    0% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.02); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.5; }
+}
+
+/* ---------------- Card Header & Image ---------------- */
+.profile-img {
+    width: 110px; /* COMPACT */
+    height: 110px; 
+    border-radius: 50%; border: 5px solid var(--secondary-glow);
+    box-shadow: 0 0 15px var(--secondary-glow); transition: all 0.4s ease;
+}
+.profile-card:hover .profile-img { transform: scale(1.05); }
+
+/* ---------------- Card Content ---------------- */
+.card-content h2 {
+    font-family: 'Poppins', sans-serif; font-size: 2em;
+    font-weight: 700; color: var(--main-glow); text-shadow: 0 0 8px var(--main-glow); 
+}
+.card-content .title {
+    color: var(--secondary-glow); font-size: 0.9em; margin-bottom: 25px; opacity: 0.9; letter-spacing: 1px;
+}
+
+/* ---------------- STATS SECTION: Horizontal (SIDE-BY-SIDE) ---------------- */
+.stats {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-around; 
+    gap: 10px;
+    
+    padding: 15px 0;
+    margin-bottom: 25px;
+    
+    border-top: 1px solid rgba(34, 211, 238, 0.2); 
+    border-bottom: 1px solid rgba(34, 211, 238, 0.2);
+    
+    text-align: center; 
+}
+
+.stat-item {
+    flex: 1; 
+    padding: 0 5px;
+    border-right: 1px solid rgba(249, 115, 22, 0.3); 
+}
+.stat-item:last-child {
+    border-right: none; 
+}
+
+.stat-item span {
+    font-size: 1.5em; 
+    font-weight: 700;
+    color: var(--main-glow);
+    text-shadow: 0 0 5px var(--main-glow);
+    display: block; 
+}
+
+.stat-item small {
+    font-size: 0.8em; 
+    color: var(--text-color);
+    opacity: 0.7;
+    margin-top: 0px; 
+    display: block;
+}
+
+/* ---------------- About Me ---------------- */
+.about-me {
+    font-size: 0.9em; line-height: 1.5; margin-bottom: 25px;
+    border-left: 3px solid var(--secondary-glow); padding-left: 10px; color: #f0f0f0;
+}
+
+/* ---------------- Social Links (IMPROVED CIRCULAR) ---------------- */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Spacing increased */
+    margin-bottom: 30px;
+}
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; /* Circular */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background: var(--card-color);
+    border: 2px solid var(--main-glow); 
+    color: var(--main-glow);
+    font-size: 1.3em;
+    box-shadow: 0 0 8px var(--main-glow);
+    transition: all 0.4s ease;
+}
+
+.social-icon:hover {
+    background: var(--main-glow);
+    color: var(--bg-color);
+    transform: scale(1.15); 
+    box-shadow: 0 0 25px var(--main-glow);
+}
+
+/* ---------------- Action Buttons (IMPROVED CIRCULAR) ---------------- */
+.card-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px; 
+    margin-top: 5px; 
+}
+
+.primary-btn, .secondary-btn {
+    flex-grow: 1; 
+    padding: 12px 15px; 
+    border-radius: 50px; /* Pill/Round buttons */
+    font-weight: 700;
+    font-size: 0.95em; 
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    text-decoration: none; 
+}
+
+.primary-btn {
+    background: var(--main-glow); color: var(--bg-color); border-color: var(--main-glow);
+    box-shadow: 0 0 10px var(--main-glow);
+}
+.primary-btn:hover {
+    background: transparent; color: var(--main-glow); box-shadow: 0 0 20px var(--main-glow);
+}
+
+.secondary-btn {
+    background: transparent; border-color: var(--secondary-glow); color: var(--secondary-glow);
+}
+.secondary
