@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@300;400&display=swap');
+
+:root {
+    --primary-color: #007bff; /* Google/Developer Blue */
+    --secondary-color: #f97316; /* Orange Accent */
+    --bg-dark: #1f1f38;
+    --bg-light: #2c2c54;
+    --text-light: #f4f4f4;
+    --text-muted: #b0b0d0;
+    --border-radius: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    /* ग्लोबल टेक्स्ट सेंटर करण्याची गरज नाही, आपण क्लास वापरणार आहोत */
+}
+
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-light);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+a:hover {
+    color: var(--secondary-color);
+}
+
+/* --- Layout --- */
+.section-padding {
+    padding: 60px 8%;
+}
+
+/* नवीन: हा क्लास टेक्स्ट सेंटर करण्यासाठी 100% काम करेल */
+.center-text {
+    text-align: center !important; 
+}
+
+h2 {
+    font-size: 2.2em;
+    margin-bottom: 40px;
+    text-align: center;
+    color: var(--primary-color);
+    border-bottom: 3px solid var(--secondary-color);
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+h2 i { margin-right: 15px; color: var(--secondary-color); }
+
+
+/* --- Header (Hero Section) --- */
+.hero-section {
+    background: var(--bg-light);
+    text-align: center;
+    padding: 80px 8% 60px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hero-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid var(--primary-color);
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.5);
+    margin-bottom: 20px;
+}
+
+.hero-section h1 {
+    font-size: 3.5em;
+    margin-bottom: 5px;
+}
+.title-role {
+    font-size: 1.2em;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+/* Community Badges */
+.community-badges span {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    border: 1px solid var(--primary-color);
+}
+
+.cta-button {
+    display: inline-block;
+    background: var(--secondary-color);
+    color: var(--bg-dark);
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 700;
+    margin-top: 30px;
+    transition: background 0.3s, transform 0.3s;
+}
+.cta-button:hover {
+    background: var(--primary-color);
+    color: var(--bg-dark);
+    transform: translateY(-3px);
+}
+
+/* --- About Section --- */
+#about {
+    /* येथे फक्त margin: auto चा वापर करायचा आहे */
+}
+.about-content {
+    max-width: 800px;
+    margin: 0 auto; 
+    font-size: 1.1em;
+}
+/* प्रत्येक पॅराग्राफला सेंटर करण्याची गरज नाही, कारण Section मध्ये 'center-text' क्लास दिला आहे */
+.passion-statement {
+    margin-top: 20px;
+    color: var(--secondary-color);
+    font-style: italic;
+    font-weight: 600;
+}
+
+/* --- Projects Section --- */
+.project-bg {
+    background-color: var(--bg-light);
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-card {
+    background: var(--bg-dark);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    border-top: 5px solid var(--primary-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 123, 255, 0.5);
+}
+
+.project-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+.tech-stack {
+    color: var(--secondary-color);
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.project-links a {
+    margin-right: 15px;
+    font-size: 1em;
+    color: var(--text-light);
+}
+.project-links a:hover {
+    color: var(--secondary-color);
+}
+
+/* --- Skills Section --- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.skill-item {
+    background: var(--bg-light);
+    padding: 30px 15px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.skill-item i {
+    font-size: 2.5em;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+.skill-item h3 {
+    font-size: 1.3em;
+    margin-bottom: 5px;
+}
+
+/* --- Contact Section --- */
+.contact-bg {
+    /* text-align: center; ची गरज नाही, कारण 'center-text' क्लास दिला आहे */
+}
+.contact-links {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center; /* बटणांना मध्यभागी आणले आहे */
+    gap: 25px;
+}
+.contact-links a {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50px;
+    color: var(--primary-color);
+    transition: all 0.3s;
+}
+.contact-links a:hover {
+    background: var(--primary-color);
+    color: var(--bg-dark);
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--bg-dark);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    font-size: 0.9em;
+}
